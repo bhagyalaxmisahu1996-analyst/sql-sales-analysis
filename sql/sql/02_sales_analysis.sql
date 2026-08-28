@@ -255,4 +255,35 @@ WHERE o.`Order Status` = 'Delivered'
 GROUP BY c.Region
 
 ORDER BY net_sales DESC;
+-- ============================================================
+-- 9. AVERAGE ORDER VALUE
+-- ============================================================
+-- Purpose:
+-- Calculate the average net sales generated per delivered order.
+
+SELECT
+    COUNT(DISTINCT o.`Order Id`) AS total_delivered_orders,
+
+    SUM(
+        (o.Qty * p.`Selling Price`)
+        - ((o.Qty * p.`Selling Price`)
+        * o.`Discount %` / 100)
+    ) AS total_net_sales,
+
+    ROUND(
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+        )
+        / COUNT(DISTINCT o.`Order Id`),
+        2
+    ) AS average_order_value
+
+FROM orders o
+
+JOIN products p
+    ON o.`Product ID` = p.`Product ID`
+
+WHERE o.`Order Status` = 'Delivered';
 
