@@ -203,4 +203,56 @@ WHERE o.`Order Status` = 'Delivered'
 GROUP BY p.Category
 
 ORDER BY net_sales DESC;
+-- ============================================================
+-- 7. REGIONAL SALES & PROFITABILITY ANALYSIS
+-- ============================================================
+-- Purpose:
+-- Compare delivered sales and profitability across regions.
+
+SELECT
+    c.Region,
+    SUM(o.Qty) AS total_quantity,
+
+    SUM(
+        (o.Qty * p.`Selling Price`)
+        - ((o.Qty * p.`Selling Price`)
+        * o.`Discount %` / 100)
+    ) AS net_sales,
+
+    SUM(
+        (o.Qty * p.`Selling Price`)
+        - ((o.Qty * p.`Selling Price`)
+        * o.`Discount %` / 100)
+        - (o.Qty * p.`Cost Price`)
+    ) AS profit,
+
+    ROUND(
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+            - (o.Qty * p.`Cost Price`)
+        )
+        /
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+        ) * 100,
+        2
+    ) AS profit_margin_pct
+
+FROM orders o
+
+JOIN customers c
+    ON o.`Customer ID` = c.`Customer ID`
+
+JOIN products p
+    ON o.`Product ID` = p.`Product ID`
+
+WHERE o.`Order Status` = 'Delivered'
+
+GROUP BY c.Region
+
+ORDER BY net_sales DESC;
 
