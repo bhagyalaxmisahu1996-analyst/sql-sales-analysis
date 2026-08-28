@@ -158,4 +158,49 @@ GROUP BY
     p.Brand
 
 ORDER BY net_sales DESC;
+-- 6. Category sales and profitability analysis
+
+SELECT
+    p.Category,
+    SUM(o.Qty) AS total_quantity,
+
+    SUM(
+        (o.Qty * p.`Selling Price`)
+        - ((o.Qty * p.`Selling Price`)
+        * o.`Discount %` / 100)
+    ) AS net_sales,
+
+    SUM(
+        (o.Qty * p.`Selling Price`)
+        - ((o.Qty * p.`Selling Price`)
+        * o.`Discount %` / 100)
+        - (o.Qty * p.`Cost Price`)
+    ) AS profit,
+
+    ROUND(
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+            - (o.Qty * p.`Cost Price`)
+        )
+        /
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+        ) * 100,
+        2
+    ) AS profit_margin_pct
+
+FROM orders o
+
+JOIN products p
+    ON o.`Product ID` = p.`Product ID`
+
+WHERE o.`Order Status` = 'Delivered'
+
+GROUP BY p.Category
+
+ORDER BY net_sales DESC;
 
