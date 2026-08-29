@@ -286,4 +286,39 @@ JOIN products p
     ON o.`Product ID` = p.`Product ID`
 
 WHERE o.`Order Status` = 'Delivered';
+-- ============================================================
+-- 10. TOP 10 CUSTOMER SALES CONTRIBUTION
+-- ============================================================
+-- Purpose:
+-- Measure how much of delivered net sales comes from the
+-- top 10 customers.
+
+SELECT
+    COUNT(*) AS top_10_customers,
+    SUM(customer_sales) AS top_10_sales
+FROM
+(
+    SELECT
+        c.`Customer ID`,
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+        ) AS customer_sales
+
+    FROM orders o
+
+    JOIN customers c
+        ON o.`Customer ID` = c.`Customer ID`
+
+    JOIN products p
+        ON o.`Product ID` = p.`Product ID`
+
+    WHERE o.`Order Status` = 'Delivered'
+
+    GROUP BY c.`Customer ID`
+
+    ORDER BY customer_sales DESC
+    LIMIT 10
+) AS top_customers;
 
