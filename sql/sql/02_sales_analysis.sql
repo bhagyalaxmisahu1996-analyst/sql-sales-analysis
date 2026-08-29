@@ -420,3 +420,67 @@ GROUP BY p.Category
 
 ORDER BY profit DESC;
 
+-- ============================================================
+-- 13. REGIONAL ORDER VALUE ANALYSIS
+-- ============================================================
+-- Purpose:
+-- Compare order value and profitability across regions.
+
+SELECT
+    c.Region,
+
+    COUNT(DISTINCT o.`Order Id`) AS delivered_orders,
+
+    SUM(
+        (o.Qty * p.`Selling Price`)
+        - ((o.Qty * p.`Selling Price`)
+        * o.`Discount %` / 100)
+    ) AS net_sales,
+
+    SUM(
+        (o.Qty * p.`Selling Price`)
+        - ((o.Qty * p.`Selling Price`)
+        * o.`Discount %` / 100)
+        - (o.Qty * p.`Cost Price`)
+    ) AS profit,
+
+    ROUND(
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+        )
+        / COUNT(DISTINCT o.`Order Id`),
+        2
+    ) AS average_order_value,
+
+    ROUND(
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+            - (o.Qty * p.`Cost Price`)
+        )
+        /
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+        ) * 100,
+        2
+    ) AS profit_margin_pct
+
+FROM orders o
+
+JOIN customers c
+    ON o.`Customer ID` = c.`Customer ID`
+
+JOIN products p
+    ON o.`Product ID` = p.`Product ID`
+
+WHERE o.`Order Status` = 'Delivered'
+
+GROUP BY c.Region
+
+ORDER BY net_sales DESC;
+
