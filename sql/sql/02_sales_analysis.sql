@@ -483,4 +483,78 @@ WHERE o.`Order Status` = 'Delivered'
 GROUP BY c.Region
 
 ORDER BY net_sales DESC;
+-- ============================================================
+-- 14. ORDER VALUE BY QUANTITY
+-- ============================================================
+-- Purpose:
+-- Compare sales and profitability across different
+-- order-size groups.
 
+SELECT
+    CASE
+        WHEN o.Qty = 1 THEN '1 Unit'
+        WHEN o.Qty = 2 THEN '2 Units'
+        WHEN o.Qty = 3 THEN '3 Units'
+        WHEN o.Qty = 4 THEN '4 Units'
+        ELSE '5+ Units'
+    END AS order_size,
+
+    COUNT(DISTINCT o.`Order Id`) AS total_orders,
+
+    SUM(
+        (o.Qty * p.`Selling Price`)
+        - ((o.Qty * p.`Selling Price`)
+        * o.`Discount %` / 100)
+    ) AS net_sales,
+
+    SUM(
+        (o.Qty * p.`Selling Price`)
+        - ((o.Qty * p.`Selling Price`)
+        * o.`Discount %` / 100)
+        - (o.Qty * p.`Cost Price`)
+    ) AS profit,
+
+    ROUND(
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+        )
+        / COUNT(DISTINCT o.`Order Id`),
+        2
+    ) AS average_order_value,
+
+    ROUND(
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+            - (o.Qty * p.`Cost Price`)
+        )
+        /
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+        ) * 100,
+        2
+    ) AS profit_margin_pct
+
+FROM orders o
+
+JOIN products p
+    ON o.`Product ID` = p.`Product ID`
+
+WHERE o.`Order Status` = 'Delivered'
+
+GROUP BY
+    CASE
+        WHEN o.Qty = 1 THEN '1 Unit'
+        WHEN o.Qty = 2 THEN '2 Units'
+        WHEN o.Qty = 3 THEN '3 Units'
+        WHEN o.Qty = 4 THEN '4 Units'
+        ELSE '5+ Units'
+    END
+
+ORDER BY
+    MIN(o.Qty);
