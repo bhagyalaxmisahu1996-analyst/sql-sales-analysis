@@ -321,4 +321,51 @@ FROM
     ORDER BY customer_sales DESC
     LIMIT 10
 ) AS top_customers;
+-- 11. TOP 10 PRODUCTS BY PROFIT
+
+SELECT
+    p.`Product ID`,
+    p.`Product Name`,
+    p.Category,
+    p.Brand,
+    SUM(o.Qty) AS total_quantity,
+
+    SUM(
+        (o.Qty * p.`Selling Price`)
+        - ((o.Qty * p.`Selling Price`)
+        * o.`Discount %` / 100)
+        - (o.Qty * p.`Cost Price`)
+    ) AS profit,
+
+    ROUND(
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+            - (o.Qty * p.`Cost Price`)
+        )
+        /
+        SUM(
+            (o.Qty * p.`Selling Price`)
+            - ((o.Qty * p.`Selling Price`)
+            * o.`Discount %` / 100)
+        ) * 100,
+        2
+    ) AS profit_margin_pct
+
+FROM orders o
+
+JOIN products p
+    ON o.`Product ID` = p.`Product ID`
+
+WHERE o.`Order Status` = 'Delivered'
+
+GROUP BY
+    p.`Product ID`,
+    p.`Product Name`,
+    p.Category,
+    p.Brand
+
+ORDER BY profit DESC
+LIMIT 10;
 
