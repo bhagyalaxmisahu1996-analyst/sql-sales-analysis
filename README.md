@@ -103,7 +103,49 @@ The analysis is designed to answer questions such as:
 
 ## 📈 Key Insights
 
-Key findings from the analysis will be added after completing the SQL analysis.
+### 💰 Overall Business Performance
+
+- Generated ₹57.49 lakh in net sales and ₹15.62 lakh in profit.
+- Overall profit margin was approximately 27.17%.
+- Total discount amount was ₹10.27 lakh, highlighting the importance of monitoring discount strategies.
+
+### 📦 Order Status Performance
+
+- Out of 1,000 orders, 579 were delivered, 212 were returned and 209 were cancelled.
+- Only 57.9% of orders were successfully delivered.
+- 42.1% of orders were either returned or cancelled, indicating an opportunity for further operational investigation.
+
+### 👥 Customer Performance
+
+- Customer 7 generated the highest delivered net sales among the analyzed customers at ₹67,081.30 and generated ₹21,381.30 in profit.
+- The top 10 customers contributed approximately 15.82% of delivered net sales, indicating relatively distributed customer contribution.
+
+### 🛍️ Product Performance
+
+- Sneakers 3 generated the highest product profit at ₹56,647.45.
+- Sneakers 6 achieved the highest profit margin among the top 10 profit-generating products at 39.37%.
+- 9 of the top 10 profit-generating products belonged to the Fashion category.
+
+### 🗂️ Category Performance
+
+- Fashion was the strongest category with ₹11.61 lakh in net sales, ₹4.02 lakh in profit and a 34.59% profit margin.
+- Fashion achieved this performance with 12 active products, while Electronics had 24 active products but a lower 22.96% margin.
+
+### 📍 Regional Performance
+
+- South generated the highest net sales at ₹12.63 lakh and had the highest AOV at ₹5,690.48.
+- East had the highest regional profit margin at 27.81%, although the difference between regional margins was relatively small.
+
+### 🏷️ Discount Impact
+
+- Profit margin declined consistently as discount levels increased.
+- Margin decreased from 37.19% at 0% discount to 13.01% at 30% discount.
+- Higher discounts were associated with lower profitability, although this analysis does not establish causation.
+
+### 🛒 Order Size
+
+- Average order value increased from ₹1,798.52 for 1-unit orders to ₹8,779.86 for orders containing 5+ units.
+- Profit margins remained broadly stable between approximately 26% and 28% across order-size groups.
 
 ## 📂 Project Structure
 
