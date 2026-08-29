@@ -146,7 +146,39 @@ The analysis is designed to answer questions such as:
 
 - Average order value increased from ₹1,798.52 for 1-unit orders to ₹8,779.86 for orders containing 5+ units.
 - Profit margins remained broadly stable between approximately 26% and 28% across order-size groups.
+## 💡 Business Recommendations
 
+Based on the analysis, the following actions could help improve business performance:
+
+### 1. Review High-Discount Strategies
+- Profit margin declined from 37.19% at 0% discount to 13.01% at 30% discount.
+- Review products receiving high discounts and establish minimum acceptable profit-margin thresholds.
+- Use targeted discounts instead of applying deep discounts broadly.
+
+### 2. Investigate Returns and Cancellations
+- Only 57.9% of orders were delivered successfully, while 21.2% were returned and 20.9% were cancelled.
+- Investigate the major reasons behind returns and cancellations.
+- Analyze these issues by product, category, region and order status to identify operational problem areas.
+
+### 3. Focus on High-Performing Categories
+- Fashion generated the highest net sales and profit with a 34.59% profit margin.
+- Consider increasing inventory availability and promotional focus for high-performing products within this category.
+- At the same time, review lower-margin categories for pricing and cost optimization opportunities.
+
+### 4. Encourage Larger Basket Sizes
+- AOV increased from ₹1,798.52 for 1-unit orders to ₹8,779.86 for orders containing 5+ units.
+- Explore cross-selling, product bundles and "frequently bought together" recommendations to encourage larger baskets.
+- Monitor whether these strategies increase basket size without significantly reducing margins.
+
+### 5. Leverage Regional Performance
+- South generated the highest net sales, while East recorded the highest regional profit margin.
+- Evaluate whether successful practices from stronger-performing regions can be applied to other regions.
+- Use regional performance data to guide inventory, pricing and promotional decisions.
+
+### 6. Monitor Product-Level Profitability
+- High sales volume does not necessarily mean the highest profitability.
+- Track both net sales and profit margin when evaluating product performance.
+- Prioritize products that combine strong demand with healthy margins.
 ## 📂 Project Structure
 
 ```text
