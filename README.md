@@ -179,16 +179,13 @@ Based on the analysis, the following actions could help improve business perform
 - High sales volume does not necessarily mean the highest profitability.
 - Track both net sales and profit margin when evaluating product performance.
 - Prioritize products that combine strong demand with healthy margins.
-## 📂 Project Structure
+## 📁 Project Structure
 
 ```text
 sql-sales-analysis/
 │
 ├── README.md
 │
-├── sql/
-│   ├── data_cleaning.sql
-│   ├── sales_analysis.sql
-│   └── advanced_analysis.sql
-│
-└── screenshots/
+└── sql/
+    ├── 01_data_cleaning.sql
+    └── 02_sales_analysis.sql
