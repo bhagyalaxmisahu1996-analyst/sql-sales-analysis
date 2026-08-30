@@ -103,6 +103,11 @@ The analysis is designed to answer questions such as:
 
 ## 📈 Key Insights
 
+### 📊 Business Performance Dashboard
+
+![Business Performance Dashboard](Business_performance.png)
+
+
 ### 💰 Overall Business Performance
 
 - Generated ₹57.49 lakh in net sales and ₹15.62 lakh in profit.
