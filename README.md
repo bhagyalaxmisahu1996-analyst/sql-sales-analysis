@@ -114,6 +114,14 @@ The analysis is designed to answer questions such as:
 - Overall profit margin was approximately 27.17%.
 - Total discount amount was ₹10.27 lakh, highlighting the importance of monitoring discount strategies.
 
+### 📊 Category Performance
+
+![Category Performance](Category_Performance.png)
+
+- Fashion generated the highest net sales at approximately ₹11.61 lakh and the highest profit at ₹4.02 lakh.
+- Electronics had the highest total quantity sold with 671 units and generated approximately ₹10.67 lakh in net sales.
+- Fashion recorded the highest profit margin at 34.59%, while Grocery had the lowest at 18.32%.
+
 ### 📦 Order Status Performance
 
 - Out of 1,000 orders, 579 were delivered, 212 were returned and 209 were cancelled.
