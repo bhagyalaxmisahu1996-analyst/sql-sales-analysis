@@ -144,10 +144,13 @@ The analysis is designed to answer questions such as:
 - Fashion was the strongest category with ₹11.61 lakh in net sales, ₹4.02 lakh in profit and a 34.59% profit margin.
 - Fashion achieved this performance with 12 active products, while Electronics had 24 active products but a lower 22.96% margin.
 
+
 ### 📍 Regional Performance
 
 - South generated the highest net sales at ₹12.63 lakh and had the highest AOV at ₹5,690.48.
 - East had the highest regional profit margin at 27.81%, although the difference between regional margins was relatively small.
+
+![Regional_Performance](sql/sql/Regional_performance.png)
 
 ### 🏷️ Discount Impact
 
@@ -159,6 +162,8 @@ The analysis is designed to answer questions such as:
 
 - Average order value increased from ₹1,798.52 for 1-unit orders to ₹8,779.86 for orders containing 5+ units.
 - Profit margins remained broadly stable between approximately 26% and 28% across order-size groups.
+  ![Average_Order_Value](sql/sql/Average_Order_Value.png)
+  
 ## 💡 Business Recommendations
 
 Based on the analysis, the following actions could help improve business performance:
